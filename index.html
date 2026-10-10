@@ -43,6 +43,9 @@ h2 { font-size: 2rem; }
 h3 { font-size: 1.3rem; }
 p { margin: 0; max-width: 65ch; }
 a { color: var(--accent); }
+a.src { text-decoration: underline; text-decoration-style: dotted; text-decoration-thickness: 1px; text-underline-offset: 3px; color: inherit; }
+a.src:hover { text-decoration-style: solid; }
+td.n a.src { color: var(--accent); }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .label {
   font-family: var(--font-mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
@@ -180,7 +183,7 @@ footer ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: colum
   <p>This is the biggest change I'd suggest, so here's the research behind it rather than just my opinion.</p>
 
   <h3>What YouTube says</h3>
-  <p>YouTube's own creator guidance says there's no ideal length, and tells creators to avoid filler and not stretch content out. Recommendations aren't based on raw minutes. YouTube measures what it calls valued watch time, which comes from viewers rating videos in satisfaction surveys, alongside likes and shares. An hour where people drift off or skip around counts for less than 40 minutes they enjoyed all the way through.</p>
+  <p>YouTube's own creator guidance <a class="src" href="https://support.google.com/youtube/answer/16559651" target="_blank" rel="noopener">says there's no ideal length</a>, and tells creators to avoid filler and not stretch content out. Recommendations aren't based on raw minutes. YouTube measures what it calls <a class="src" href="https://blog.youtube/inside-youtube/on-youtubes-recommendation-system/" target="_blank" rel="noopener">valued watch time</a>, which comes from viewers rating videos in satisfaction surveys, alongside likes and shares. An hour where people drift off or skip around counts for less than 40 minutes they enjoyed all the way through.</p>
 
   <h3>What the best in the genre do</h3>
   <p>Length on its own isn't the problem. Plenty of big channels run long. The difference is how hard they cut.</p>
@@ -188,11 +191,11 @@ footer ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: colum
     <table>
       <thead><tr><th>Who</th><th>Episode length</th><th>How they get there</th></tr></thead>
       <tbody>
-        <tr><td>Ghost Adventures (TV)</td><td class="n">about 42 min</td><td>Zak Bagans has described reviewing 20 hours of footage from a couple of cameras, with the flagged moments shaping the episode</td></tr>
-        <tr><td>Ghost Hunters (TV)</td><td class="n">about 46 min</td><td>A five-day Stanley Hotel case was cut to look like a couple of hours</td></tr>
-        <tr><td>Most Haunted (TV)</td><td class="n">45 min</td><td>Reportedly has dozens of episodes left unaired because too little happened</td></tr>
-        <tr><td>Ghost Files (YouTube)</td><td class="n">52 to 58 min</td><td>Split a 24-hour investigation into three parts of around 30 minutes</td></tr>
-        <tr><td>Adam Mark Explores (UK, 405K)</td><td class="n">47 min</td><td rowspan="4">Example uploads from UK investigation channels bigger than yours. Across 16 UK channels the example videos averaged about 34 minutes.</td></tr>
+        <tr><td>Ghost Adventures (TV)</td><td class="n"><a class="src" href="https://thetvdb.com/series/ghost-adventures/seasons/official/26" target="_blank" rel="noopener">about 42 min</a></td><td>Zak Bagans has <a class="src" href="https://www.mentalfloss.com/article/640719/zak-bagans-ghost-adventures-facts" target="_blank" rel="noopener">described reviewing 20 hours of footage</a> from a couple of cameras, with the flagged moments shaping the episode</td></tr>
+        <tr><td>Ghost Hunters (TV)</td><td class="n"><a class="src" href="https://en.wikipedia.org/wiki/Ghost_Hunters_(TV_series)" target="_blank" rel="noopener">about 46 min</a></td><td>A five-day Stanley Hotel case was <a class="src" href="https://geekdad.com/2015/08/jason-hawes/" target="_blank" rel="noopener">cut to look like a couple of hours</a></td></tr>
+        <tr><td>Most Haunted (TV)</td><td class="n"><a class="src" href="https://en.wikipedia.org/wiki/Most_Haunted" target="_blank" rel="noopener">45 min</a></td><td>Reportedly has <a class="src" href="https://www.higgypop.com/news/things-you-never-knew-about-most-haunted/" target="_blank" rel="noopener">dozens of episodes left unaired</a> because too little happened</td></tr>
+        <tr><td>Ghost Files (YouTube)</td><td class="n"><a class="src" href="https://thetvdb.com/series/ghost-files/seasons/official/5" target="_blank" rel="noopener">52 to 58 min</a></td><td><a class="src" href="https://thetvdb.com/series/ghost-files/seasons/official/5" target="_blank" rel="noopener">Split a 24-hour investigation</a> into three parts of around 30 minutes</td></tr>
+        <tr><td>Adam Mark Explores (UK, 405K)</td><td class="n">47 min</td><td rowspan="4"><a class="src" href="https://ytubeinfluencers.com/category/paranormal/country/united-kingdom/" target="_blank" rel="noopener">Example uploads from UK investigation channels</a> bigger than yours. Across 16 UK channels the example videos averaged about 34 minutes.</td></tr>
         <tr><td>Ghost Theory (UK, 191K)</td><td class="n">52 min</td></tr>
         <tr><td>Ouija Brothers (UK, 128K)</td><td class="n">43 min</td></tr>
         <tr><td>Haunted Finders (UK, 113K)</td><td class="n">39 min</td></tr>
@@ -202,7 +205,7 @@ footer ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: colum
   <p>The pattern: TV cuts a whole night down to under an hour, and the UK channels a step or two ahead of you mostly sit between 40 and 50 minutes. When a night is quiet, the professionals cut harder or don't air it. When a night is huge, they split it into parts rather than one marathon.</p>
 
   <h3>What viewers say they want</h3>
-  <p>In a 2023 survey of over 1,000 paranormal fans by Higgypop, 64% said over-dramatisation was their biggest frustration with ghost hunting shows, and 69% wanted more local folklore. People come for real moments and real history, not for the walk between rooms.</p>
+  <p>In a <a class="src" href="https://higgypop.com/news/distrust-of-paranormal-tv-shows-is-sending-viewers-to-youtube" target="_blank" rel="noopener">2023 survey of over 1,000 paranormal fans</a> by Higgypop, 64% said over-dramatisation was their biggest frustration with ghost hunting shows, and 69% wanted more local folklore. People come for real moments and real history, not for the walk between rooms.</p>
 
   <h3>What I'd suggest</h3>
   <ul class="plain">
@@ -211,13 +214,13 @@ footer ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: colum
     <li><b>Big nights become two-parters.</b> That's two uploads from one investigation instead of one long one.</li>
     <li><b>Chapters for each room</b> so viewers can jump around without leaving the video.</li>
   </ul>
-  <p class="note">A suggestion for trying it: make the next three episodes tighter, then compare them with the last three in YouTube Studio. Look at average view duration, how many people are still watching after 30 seconds, and likes per view. If the long format does better, we go back to it.</p>
+  <p class="note">A suggestion for trying it: make the next three episodes tighter, then compare them with the last three in YouTube Studio. Look at average view duration, <a class="src" href="https://support.google.com/youtube/answer/9314415" target="_blank" rel="noopener">how many people are still watching after 30 seconds</a>, and likes per view. If the long format does better, we go back to it.</p>
 
   <h3>Example run sheet: The King Charles House, Worcester</h3>
   <div class="runsheet">
     <div class="row"><span class="t">00:00</span><div><b>Cold open</b><p>The single best moment of the night, straight away. No intro first.</p></div></div>
     <div class="row"><span class="t">00:45</span><div><b>Title sting</b><p>Five seconds, same every episode.</p></div></div>
-    <div class="row"><span class="t">01:00</span><div><b>The history</b><p>Built in 1577 and Grade II* listed. In 1651, after the Battle of Worcester, tradition says Charles II slipped out the back as Parliamentarian troops reached the front door. Historians even disagree on who owned it at the time, which is a nice detail to share on camera.</p></div></div>
+    <div class="row"><span class="t">01:00</span><div><b>The history</b><p>Built in 1577 and <a class="src" href="https://britishlistedbuildings.co.uk/101389751-king-charles-house-worcester-cathedral-ward" target="_blank" rel="noopener">Grade II* listed</a>. In 1651, after the Battle of Worcester, <a class="src" href="https://www.worcesterpeopleandplaces.org.uk/news/65/146/King-Charles-House.html" target="_blank" rel="noopener">tradition says</a> Charles II slipped out the back as Parliamentarian troops reached the front door. <a class="src" href="https://www.worcesterpeopleandplaces.org.uk/news/65/146/King-Charles-House.html" target="_blank" rel="noopener">Historians even disagree</a> on who owned it at the time, which is a nice detail to share on camera.</p></div></div>
     <div class="row"><span class="t">04:00</span><div><b>Team and kit</b><p>Who's here, what we're using, what we're hoping to find.</p></div></div>
     <div class="row"><span class="t">06:00</span><div><b>Vigils, one chapter per room</b><p>The core of the episode, cut between CAM A and CAM B, moving from moment to moment.</p></div></div>
     <div class="row"><span class="t">34:00</span><div><b>Evidence review</b><p>Each moment replayed, untouched first and then enhanced, clearly labelled. Anything you explained away goes in too.</p></div></div>
@@ -227,13 +230,13 @@ footer ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: colum
   <p class="note">Showing your working builds trust. Viewers in this genre are quick to call things fake, so when they see what you checked along the way, the moments you call "that one was evidence beyond doubt" carry far more weight.</p>
 
   <h3>When to post</h3>
-  <p>For a UK audience, evenings and weekends are the busy times, and the usual advice is to publish a couple of hours before your viewers are most active so YouTube has time to pick the video up. If you don't already have a set slot, I'd suggest <b>Friday at around 6pm</b>, at the same time every episode, so people learn when to expect it. The Audience tab in YouTube Studio shows when your own viewers are online, so we can fine-tune it from real data.</p>
+  <p>For a UK audience, evenings and weekends are the busy times, and the usual advice is to <a class="src" href="https://www.shopify.com/blog/best-time-to-upload-to-youtube" target="_blank" rel="noopener">publish a couple of hours before your viewers are most active</a> so YouTube has time to pick the video up. If you don't already have a set slot, I'd suggest <b>Friday at around 6pm</b>, at the same time every episode, so people learn when to expect it. The Audience tab in YouTube Studio shows when your own viewers are online, so we can fine-tune it from real data.</p>
 </section>
 
 <section aria-labelledby="talk">
   <span class="label">Comments and likes</span>
   <h2 id="talk">Turning views into conversation</h2>
-  <p>The episodes are clearly being watched. The next step is getting viewers to talk back. Comments and likes help YouTube decide what to recommend, and they're what turns a viewer into someone who comes back for every episode. A few small habits that I can build into each edit:</p>
+  <p>The episodes are clearly being watched. The next step is getting viewers to talk back. Comments and likes <a class="src" href="https://blog.youtube/inside-youtube/on-youtubes-recommendation-system/" target="_blank" rel="noopener">help YouTube decide what to recommend</a>, and they're what turns a viewer into someone who comes back for every episode. A few small habits that I can build into each edit:</p>
   <ul class="plain">
     <li><b>End on a question.</b> Ask one specific thing near the end, like "what do you think the knocks in the cellar were?", and pin the same question as the first comment.</li>
     <li><b>Ask after the first big moment.</b> A quick like-and-subscribe nudge works better once viewers have been hooked than it does in the first minute.</li>
@@ -246,10 +249,10 @@ footer ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: colum
 <section aria-labelledby="shorts">
   <span class="label">Shorts</span>
   <h2 id="shorts">How many, and where</h2>
-  <p><b>4 to 5 shorts per investigation</b>, so 8 to 10 a month or roughly two a week. Shorts under 90 seconds hold on to far more of their viewers than longer ones, so I'd keep most of them between 20 and 60 seconds. One or two go out before the episode as teasers, the rest after, each pointing back to the full investigation.</p>
+  <p><b>4 to 5 shorts per investigation</b>, so 8 to 10 a month or roughly two a week. <a class="src" href="https://www.argil.ai/blog/how-long-can-youtube-shorts-be" target="_blank" rel="noopener">Shorts under 90 seconds hold on to far more of their viewers</a> than longer ones, so I'd keep most of them between 20 and 60 seconds. One or two go out before the episode as teasers, the rest after, each pointing back to the full investigation.</p>
   <div class="platforms">
     <div class="plat"><span class="role">Home base</span><h3>YouTube Shorts</h3><p>Same channel as the episodes, and each short can link straight to the full investigation. This is the one that feeds your 10K subscribers.</p></div>
-    <div class="plat"><span class="role">Reach and comments</span><h3>TikTok</h3><p>Best for being found by people who've never heard of you, and it gets far more comments per video than the other two.</p></div>
+    <div class="plat"><span class="role">Reach and comments</span><h3>TikTok</h3><p>Best for being found by people who've never heard of you, and it gets <a class="src" href="https://www.socialinsider.io/blog/tiktok-vs-reels-vs-shorts/amp/" target="_blank" rel="noopener">far more comments per video</a> than the other two.</p></div>
     <div class="plat"><span class="role">Your existing audience</span><h3>Facebook Reels</h3><p>Your 1.7K Facebook followers are already there, so the same clips cost nothing extra to post.</p></div>
   </div>
   <p>Good shorts in this genre: the bang, knock or voice with a replay and captions; "did you hear that?" reactions; a 30-second history of the building over the drone shot; and short behind-the-scenes bits of setting up in the dark.</p>
@@ -271,9 +274,9 @@ footer ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: colum
     <div>
       <h3>How to do it</h3>
       <ul class="plain">
-        <li><b>YouTube and Facebook:</b> you're already well past the subscriber and follower minimums, so you can go live from the phone apps.</li>
-        <li><b>TikTok:</b> usually needs around 1,000 followers there.</li>
-        <li>Turn live streaming on in YouTube Studio at least a day before the first time, because activation can take up to 24 hours.</li>
+        <li><b>YouTube and Facebook:</b> you're already well past the <a class="src" href="https://streamer.guide/guides/how-to-go-live-on-youtube" target="_blank" rel="noopener">YouTube subscriber</a> and <a class="src" href="https://developers.facebook.com/documentation/live-video-api/getting-started" target="_blank" rel="noopener">Facebook follower</a> minimums, so you can go live from the phone apps.</li>
+        <li><b>TikTok:</b> <a class="src" href="https://stackinfluence.com/blog/how-many-followers-on-tiktok-to-go-live-in-2026" target="_blank" rel="noopener">usually needs around 1,000 followers</a> there.</li>
+        <li>Turn live streaming on in YouTube Studio at least a day before the first time, because <a class="src" href="https://streamer.guide/guides/how-to-go-live-on-youtube" target="_blank" rel="noopener">activation can take up to 24 hours</a>.</li>
         <li>Check the phone signal in the room first, as old buildings and cellars are often dead zones, and ask the venue if streaming is OK.</li>
       </ul>
     </div>
@@ -338,13 +341,16 @@ footer ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: colum
 </section>
 
 <footer>
-  <p>Put together by Matt. Platform rules change often, so the numbers above were checked in October 2026 and are worth a quick re-check before relying on them.</p>
+  <p>Put together by Matt. Underlined words link to their source and open in a new tab. Platform rules change often, so the numbers above were checked in October 2026 and are worth a quick re-check before relying on them.</p>
   <div>
     <p class="label">Sources</p>
     <ol>
       <li><a href="https://support.google.com/youtube/answer/16559651" target="_blank" rel="noopener">YouTube Help: video length guidance</a></li>
       <li><a href="https://blog.youtube/inside-youtube/on-youtubes-recommendation-system/" target="_blank" rel="noopener">YouTube Official Blog: how recommendations work</a></li>
       <li><a href="https://support.google.com/youtube/answer/9314415" target="_blank" rel="noopener">YouTube Help: audience retention</a></li>
+      <li><a href="https://thetvdb.com/series/ghost-adventures/seasons/official/26" target="_blank" rel="noopener">TheTVDB: Ghost Adventures season 26</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Ghost_Hunters_(TV_series)" target="_blank" rel="noopener">Wikipedia: Ghost Hunters</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Most_Haunted" target="_blank" rel="noopener">Wikipedia: Most Haunted</a></li>
       <li><a href="https://www.mentalfloss.com/article/640719/zak-bagans-ghost-adventures-facts" target="_blank" rel="noopener">Mental Floss: Ghost Adventures facts</a></li>
       <li><a href="https://geekdad.com/2015/08/jason-hawes/" target="_blank" rel="noopener">GeekDad: Jason Hawes interview</a></li>
       <li><a href="https://www.higgypop.com/news/things-you-never-knew-about-most-haunted/" target="_blank" rel="noopener">Higgypop: things you never knew about Most Haunted</a></li>
@@ -355,6 +361,7 @@ footer ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: colum
       <li><a href="https://www.socialinsider.io/blog/tiktok-vs-reels-vs-shorts/amp/" target="_blank" rel="noopener">Socialinsider: TikTok vs Reels vs Shorts engagement</a></li>
       <li><a href="https://www.shopify.com/blog/best-time-to-upload-to-youtube" target="_blank" rel="noopener">Shopify: best time to upload to YouTube</a></li>
       <li><a href="https://streamer.guide/guides/how-to-go-live-on-youtube" target="_blank" rel="noopener">Streamer Guide: going live on YouTube</a></li>
+      <li><a href="https://developers.facebook.com/documentation/live-video-api/getting-started" target="_blank" rel="noopener">Meta: Facebook Live requirements</a></li>
       <li><a href="https://stackinfluence.com/blog/how-many-followers-on-tiktok-to-go-live-in-2026" target="_blank" rel="noopener">Stack Influence: TikTok LIVE requirements</a></li>
       <li><a href="https://www.worcesterpeopleandplaces.org.uk/news/65/146/King-Charles-House.html" target="_blank" rel="noopener">Worcester People and Places: King Charles House</a></li>
       <li><a href="https://britishlistedbuildings.co.uk/101389751-king-charles-house-worcester-cathedral-ward" target="_blank" rel="noopener">British Listed Buildings: King Charles House</a></li>
