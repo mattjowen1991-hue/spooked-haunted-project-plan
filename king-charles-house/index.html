@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="King Charles House Run Sheet">
+<meta property="og:description" content="Spooked Haunted Project investigation plan: what to do, what to say and when, room by room.">
+<title>King Charles House Run Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a single-column night run sheet. Timeline first, then room cards, then the wind down. Black and white, like infrared footage. */
+:root {
+  --bg: #0a0a0a;
+  --surface: #121212;
+  --line: #2a2a2a;
+  --fg: #ececec;
+  --muted: #8f8f8f;
+  --accent: #f5f5f5;
+  --accent-soft: rgba(255,255,255,.07);
+  --rec: #e5484d;
+  --font-display: "IM Fell English", "Iowan Old Style", Georgia, serif;
+  --font-body: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: radial-gradient(ellipse at 50% 0%, #1c1c1c 0%, var(--bg) 60%) fixed, var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.6;
+  padding-inline: 18px; padding-block: env(safe-area-inset-top, 0px) 64px;
+}
+body::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 10; opacity: .09;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.wrap { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 52px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.15; text-wrap: balance; margin: 0; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.3rem; }
+p { margin: 0; max-width: 65ch; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.label { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+section { display: flex; flex-direction: column; gap: 16px; }
+.muted { color: var(--muted); }
+ul.plain { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 8px; }
+ul.plain li::marker { color: var(--accent); }
+.note { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 12px 14px; border-radius: 0 4px 4px 0; }
+
+/* Jump nav */
+nav.jump { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: rgba(10,10,10,.92); backdrop-filter: blur(6px); margin-inline: -18px; padding: 10px 18px; border-bottom: 1px solid var(--line); overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+nav.jump::-webkit-scrollbar { display: none; }
+nav.jump a { font-family: var(--font-mono); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); text-decoration: none; margin-right: 18px; }
+nav.jump a:last-child { margin-right: 0; }
+
+/* Hero */
+.hero { padding-top: 24px; }
+.viewfinder { position: relative; border: 1px solid var(--line); border-radius: 4px; padding: 22px 20px 20px; background: var(--surface); display: flex; flex-direction: column; gap: 14px; }
+.viewfinder::before, .viewfinder::after { content: ""; position: absolute; width: 18px; height: 18px; border-color: var(--accent); border-style: solid; }
+.viewfinder::before { top: 8px; left: 8px; border-width: 2px 0 0 2px; }
+.viewfinder::after { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; }
+.vf-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; font-family: var(--font-mono); font-size: .78rem; color: var(--muted); }
+.rec { display: inline-flex; align-items: center; gap: 8px; color: var(--rec); font-weight: 600; letter-spacing: .1em; }
+.rec i { width: 9px; height: 9px; border-radius: 50%; background: var(--rec); display: inline-block; animation: blink 1.6s steps(1) infinite; }
+@keyframes blink { 50% { opacity: .2; } }
+@media (prefers-reduced-motion: reduce) { .rec i { animation: none; } }
+.hero h1 { font-size: clamp(2.3rem, 9vw, 3.4rem); text-shadow: 0 0 18px rgba(255,255,255,.18); margin-top: 6px; }
+.hero h1 em { font-style: italic; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+.facts div { background: var(--bg); padding: 12px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.facts strong { font-family: var(--font-display); font-weight: 400; font-size: 1.3rem; line-height: 1.2; }
+.facts span { color: var(--muted); font-size: .85rem; line-height: 1.35; }
+
+/* Timeline */
+.runsheet { border-top: 1px solid var(--line); }
+.row { display: grid; grid-template-columns: 4.4rem 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.row .t { font-family: var(--font-mono); font-size: .82rem; padding-top: 3px; font-variant-numeric: tabular-nums; }
+.row b { display: block; }
+.row p { color: var(--muted); font-size: .95rem; }
+
+/* Checklist */
+.check { display: flex; flex-direction: column; gap: 2px; }
+.check label { display: grid; grid-template-columns: 26px 1fr; gap: 10px; align-items: start; padding: 9px 0; border-bottom: 1px solid var(--line); cursor: pointer; }
+.check input { appearance: none; -webkit-appearance: none; width: 22px; height: 22px; margin: 2px 0 0; border: 1.5px solid var(--muted); border-radius: 4px; display: grid; place-items: center; background: transparent; }
+.check input:checked { background: var(--accent); border-color: var(--accent); }
+.check input:checked::after { content: ""; width: 10px; height: 5px; border-left: 2.5px solid var(--bg); border-bottom: 2.5px solid var(--bg); transform: rotate(-45deg) translate(1px, -1px); }
+.check input:checked + span { color: var(--muted); text-decoration: line-through; }
+
+/* Script lines */
+.say { border: 1px solid var(--line); border-radius: 6px; padding: 14px; display: flex; flex-direction: column; gap: 8px; background: var(--surface); }
+.say p { font-family: var(--font-display); font-size: 1.12rem; line-height: 1.45; }
+.say .label { color: var(--muted); }
+
+/* Room cards */
+.rooms { display: flex; flex-direction: column; gap: 18px; }
+.room { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.room > header { padding: 14px 16px; background: var(--surface); border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 4px; }
+.room > header h3 { font-size: 1.45rem; }
+.room > header .label { color: var(--muted); }
+.room .body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 14px; }
+.room .part { display: flex; flex-direction: column; gap: 6px; }
+.room .part > .label { color: var(--fg); }
+.room .say { background: transparent; }
+.tag { display: inline-block; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; border: 1px solid var(--line); border-radius: 999px; padding: 2px 8px; color: var(--muted); margin-right: 6px; }
+
+/* Vigil steps */
+.steps { counter-reset: s; display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--line); }
+.steps li { list-style: none; counter-increment: s; display: grid; grid-template-columns: 2.2rem 1fr; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.steps li::before { content: counter(s); font-family: var(--font-mono); font-size: .9rem; color: var(--muted); padding-top: 2px; }
+.steps { padding: 0; margin: 0; }
+.steps b { display: block; }
+.steps span { color: var(--muted); font-size: .95rem; }
+
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 4px; }
+table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+tr:last-child td { border-bottom: 0; }
+
+.btn { display: inline-block; font: 600 .95rem var(--font-body); color: var(--bg); background: var(--accent); border-radius: 4px; padding: 11px 16px; text-decoration: none; }
+.btnrow { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn.ghost { background: transparent; color: var(--fg); border: 1px solid var(--line); }
+
+footer { border-top: 1px solid var(--line); padding-top: 20px; display: flex; flex-direction: column; gap: 14px; font-size: .9rem; color: var(--muted); }
+footer ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="viewfinder">
+    <div class="vf-top">
+      <span class="rec"><i></i>REC</span>
+      <span>SUN 11 OCT 2026</span>
+      <span>FROM 20:00</span>
+    </div>
+    <h1>The King Charles House <em>run sheet</em></h1>
+    <p>Everything for tomorrow night in one place: how to open, what to say in each room and when, how to run a vigil, and how to wind down. Follow it as closely or as loosely as you like. It's a template, so the same shape works for every location.</p>
+    <p class="label">29 New Street, Worcester WR1 2DP</p>
+  </div>
+</header>
+
+<nav class="jump" aria-label="Jump to section">
+  <a href="#before">Before</a><a href="#timeline">Timeline</a><a href="#opening">Opening</a><a href="#history">History</a><a href="#rooms">Rooms</a><a href="#vigil">Vigils</a><a href="#questions">Questions</a><a href="#wind">Wind down</a>
+</nav>
+
+<section aria-labelledby="glance">
+  <span class="label">The building at a glance</span>
+  <h2 id="glance">What we're walking into</h2>
+  <div class="facts">
+    <div><strong>1577</strong><span>Carved inscription: "Love God, honour ye King"</span></div>
+    <div><strong>3 Sept 1651</strong><span>Charles II escapes through the back door</span></div>
+    <div><strong>Grade II*</strong><span>Listed timber-framed building</span></div>
+    <div><strong>Oubliette</strong><span>A bottle-shaped dungeon under the floor</span></div>
+  </div>
+  <p><b>What's been reported:</b> a male figure in period dress seen from time to time, and staff hearing bumps, groans and footsteps over the years. Ask the staff tonight where in the building these happened, and get that on camera.</p>
+</section>
+
+<section aria-labelledby="before">
+  <span class="label">Before you go</span>
+  <h2 id="before">Checklist</h2>
+  <div class="check" id="checklist">
+    <label><input type="checkbox" id="c1"><span>Camera batteries charged, spares packed, memory cards empty</span></label>
+    <label><input type="checkbox" id="c2"><span>Both camera clocks set to the same time as your phones</span></label>
+    <label><input type="checkbox" id="c3"><span>Everyone has opened the <a href="../log/">SHP Log</a> once while they have signal, so it works offline later</span></label>
+    <label><input type="checkbox" id="c4"><span>Phones on silent, flight mode for anyone not logging or streaming</span></label>
+    <label><input type="checkbox" id="c5"><span>Confirmed with the venue which rooms we can use, what time they close, and whether we can go live</span></label>
+    <label><input type="checkbox" id="c6"><span>Torches, tripod, any devices (K2, REM pod, recorders) with fresh batteries</span></label>
+    <label><input type="checkbox" id="c7"><span>Agreed who is on CAM A (static) and CAM B (follows the team)</span></label>
+  </div>
+  <p class="note">The pub normally trades until 11pm on Sundays, so there may be customers in for the first part of the night. Use that time for the walkthrough, the staff interview and the history pieces, and save the vigils for after closing.</p>
+</section>
+
+<section aria-labelledby="timeline">
+  <span class="label">The shape of the night</span>
+  <h2 id="timeline">Timeline</h2>
+  <p>This is the order the best ghost hunting shows follow: the place and its story first, then the people who've experienced things, then the investigation. Times are a guide, so adjust them to the venue.</p>
+  <div class="runsheet">
+    <div class="row"><span class="t">20:00</span><div><b>Arrive and meet</b><p>Say hello to the staff, agree the rooms and the rules. Check everyone has the SHP Log open.</p></div></div>
+    <div class="row"><span class="t">20:15</span><div><b>Walkthrough with the staff</b><p>Lights on, both cameras rolling. Let a staff member show you round and tell you what they've experienced, room by room. This is the witness interview.</p></div></div>
+    <div class="row"><span class="t">20:45</span><div><b>Set up and baseline</b><p>Place CAM A, set out any devices, and listen. Note the natural noises in each room: the fire, fridges, pipes, traffic on New Street.</p></div></div>
+    <div class="row"><span class="t">21:00</span><div><b>Opening and history</b><p>Opening piece to camera outside by the statue, then the history piece by the fireplace. See the scripts below.</p></div></div>
+    <div class="row"><span class="t">21:30</span><div><b>Quieter rooms first</b><p>If the pub is still trading, start with a room away from the bar, like upstairs or the back of the building.</p></div></div>
+    <div class="row"><span class="t">23:00</span><div><b>After closing: main vigils</b><p>Lights off. The bar and fireplace, the oubliette, the escape route. About 30 to 40 minutes each.</p></div></div>
+    <div class="row"><span class="t">Late</span><div><b>Final vigil</b><p>Everyone back in whichever room was most active.</p></div></div>
+    <div class="row"><span class="t">End</span><div><b>Wind down and verdict</b><p>Closing piece to camera, thank the venue, send the logs, pack down.</p></div></div>
+  </div>
+</section>
+
+<section aria-labelledby="opening">
+  <span class="label">Opening piece to camera</span>
+  <h2 id="opening">How to start</h2>
+  <p>Film this outside, by the statue of Charles II slipping out of the house. Keep it under a minute. Say it in your own words. These are just prompts.</p>
+  <div class="say">
+    <span class="label">Prompt</span>
+    <p>"Tonight we're in Worcester, at the King Charles House. It was built in 1577, and in 1651 it was the headquarters of a king on the run. As the battle was lost, Charles II fled through this building with soldiers at the front door. Staff say something is still here. Tonight we find out."</p>
+  </div>
+  <ul class="plain">
+    <li>Introduce who's here tonight in one line each</li>
+    <li>Say what you're hoping to find, ideally one specific thing</li>
+    <li>Film a few seconds of the outside and the street. It's the shot that opens the history segment.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="history">
+  <span class="label">The history piece</span>
+  <h2 id="history">What to say, and when</h2>
+  <p>Film this early, before the vigils, standing by the carved fireplace in the bar. In the edit it goes right after the cold open and title, so viewers know why the place matters before anything happens. Two to three minutes is plenty. Here's the story in the order to tell it.</p>
+  <div class="say"><span class="label">1 · The house</span><p>Built in 1577, and one local history says it was built by a wealthy Worcester brewer, Richard Durant. A carved inscription on the building has the date and the words "Love God, honour ye King". Other accounts say it belonged to the Berkeley family. Even local historians disagree about who owned it.</p></div>
+  <div class="say"><span class="label">2 · The battle</span><p>3 September 1651, the Battle of Worcester. Around 16,000 men under the young Charles II against roughly 28,000 under Oliver Cromwell. When Parliament's troops took Fort Royal, just outside the city, and turned the guns on Worcester, it was over.</p></div>
+  <div class="say"><span class="label">3 · The escape</span><p>Charles used this house as his headquarters. As Cromwell's men broke into the city, he ran back here. Tradition says that as the soldiers reached the front door, he slipped out of the back, got on a horse and rode out through St Martin's Gate. A last cavalry charge down the street bought him the time to get away.</p></div>
+  <div class="say"><span class="label">4 · The cost</span><p>About 3,000 Royalist soldiers died that day, and around 10,000 were taken prisoner. Thousands of Scottish prisoners were later shipped to the American colonies and the Caribbean as forced labour. It was the last major battle of the English Civil War.</p></div>
+  <div class="say"><span class="label">5 · What happened next</span><p>Charles spent six weeks on the run with a £1,000 price on his head. Three days after the battle he hid all day in an oak tree at Boscobel while soldiers searched the woods below. That's the Royal Oak in all those pub names. He finally escaped to France in October.</p></div>
+  <p class="muted">Save the oubliette and the carvings for their own rooms. They work better as surprises on the walk round than in the history piece.</p>
+</section>
+
+<section aria-labelledby="rooms">
+  <span class="label">Room by room</span>
+  <h2 id="rooms">What to say in each room</h2>
+  <p>Each card has what to say on camera when you walk in, what's been reported, and something specific to try. Confirm which rooms you can use on the night, and use the blank card at the end for anywhere else.</p>
+
+  <div class="rooms">
+
+    <article class="room">
+      <header><span class="label">Room 1 · Way in</span><h3>The front door, New Street</h3></header>
+      <div class="body">
+        <div class="part"><span class="label">Say on camera</span>
+          <div class="say"><p>"This is the door Charles II ran in through. As Cromwell's men came down New Street, locals are said to have pushed carts and oxen into the road to slow them down."</p></div>
+        </div>
+        <div class="part"><span class="label">Try this</span><p>Stand outside and walk the route he would have taken through the building to the back door. It's a great shot for the history segment, and it shows viewers the layout before you go dark.</p></div>
+      </div>
+    </article>
+
+    <article class="room">
+      <header><span class="label">Room 2 · The heart of the house</span><h3>The bar and the carved fireplace</h3></header>
+      <div class="body">
+        <div class="part"><span class="label">Say on camera</span>
+          <div class="say"><p>"Look at this carving over the fireplace. It's from the 1600s, and it's full of the devil. Here he's coming in through a window and scaring a group of card players, and one of them is hiding under the table. Here he's raising a pint to men drinking. Nobody's sure what it means. It might be a warning against gambling, or a comment on the Civil War."</p></div>
+        </div>
+        <div class="part"><span class="label">Good to know</span><p>The carving is thought to have been brought here from another house of the same age that was demolished. Look for the three green men at the top.</p></div>
+        <div class="part"><span class="label">Try this</span><p>A trigger object tied to the carving: lay a few playing cards face down on a table in front of the fireplace, mark their position, and ask whoever's here to move one. Lock CAM A on the table.</p></div>
+        <div class="part"><span class="label">Watch out for</span><p><span class="tag">Baseline</span>The real fire ticks and settles as it cools, and the bar has fridges and pumps. Call those noises out when they happen.</p></div>
+      </div>
+    </article>
+
+    <article class="room">
+      <header><span class="label">Room 3 · Under the floor</span><h3>The trap door and the oubliette</h3></header>
+      <div class="body">
+        <div class="part"><span class="label">Say on camera</span>
+          <div class="say"><p>"This trap door at the back of the pub isn't a cellar. It's an oubliette, from the French for 'to forget'. It's a bottle-shaped hole where the hatch is the only way in or out. In the 1700s a magistrate is said to have used it to hold the accused overnight before they went to court."</p></div>
+        </div>
+        <div class="part"><span class="label">Good to know</span><p>One pub listing claims there's a skeleton in it. Treat that as a legend unless the staff can tell you more, and say so on camera if you mention it. The building was also used as judges' quarters at one point, which fits the magistrate story.</p></div>
+        <div class="part"><span class="label">Try this</span><p>An EVP session sitting around the hatch, with a recorder placed right on it, or inside if the staff allow and it's safe. Ask questions about being held and being forgotten. Only open it if the venue says yes.</p></div>
+      </div>
+    </article>
+
+    <article class="room">
+      <header><span class="label">Room 4 · The escape route</span><h3>The back door</h3></header>
+      <div class="body">
+        <div class="part"><span class="label">Say on camera</span>
+          <div class="say"><p>"This is where Charles II got out. With soldiers at the front, he left through here, got on a horse and rode for St Martin's Gate. Accounts say the cavalry charge that covered him was led by the Earl of Cleveland and a Major Careless. Three days later, Careless was the man hiding up the oak tree with him."</p></div>
+        </div>
+        <div class="part"><span class="label">Try this</span><p>Recreate the moment. One person stands at the back door, the rest at the front, and you call out to Charles directly. "We know you came through here. Were you afraid?" Keep both cameras on the doorway.</p></div>
+      </div>
+    </article>
+
+    <article class="room">
+      <header><span class="label">Room 5 · Upstairs</span><h3>The first floor and the stairs</h3></header>
+      <div class="body">
+        <div class="part"><span class="label">Say on camera</span>
+          <div class="say"><p>"These stairs are steep and winding, and staff have heard footsteps in this building over the years. In 1651 the king used this house as his headquarters, so somewhere in this building he and his officers planned their last stand."</p></div>
+        </div>
+        <div class="part"><span class="label">Good to know</span><p>There's a piano up here for visiting musicians. The stairs are narrow and steep, so go slowly in the dark and keep the torches on until everyone's settled.</p></div>
+        <div class="part"><span class="label">Try this</span><p>Use the piano as a trigger object. Lock CAM A on the keys, close the lid if they'll let you, and ask for one note. Then a footsteps test: everyone sits still in silence for two minutes and listens to the stairs.</p></div>
+      </div>
+    </article>
+
+    <article class="room">
+      <header><span class="label">Room 6 · If you can get in</span><h3>The cellar</h3></header>
+      <div class="body">
+        <div class="part"><span class="label">Good to know</span><p>Nothing specific is recorded about the cellar, so ask the staff whether they've had experiences down there. If they have, it becomes a strong room. If not, use it for a short, quiet lights-out session.</p></div>
+        <div class="part"><span class="label">Watch out for</span><p><span class="tag">Baseline</span>Beer lines, cooling equipment and drains make plenty of noise. Do a full baseline before you start asking questions.</p></div>
+      </div>
+    </article>
+
+    <article class="room">
+      <header><span class="label">Any other room</span><h3>Blank card</h3></header>
+      <div class="body">
+        <div class="part"><span class="label">On the walkthrough, find out</span>
+          <ul class="plain">
+            <li>What was this room used for in the past?</li>
+            <li>Has anyone seen, heard or felt anything in here? When, and what exactly?</li>
+            <li>What natural noises does it make?</li>
+          </ul>
+        </div>
+        <div class="part"><span class="label">Then say on camera</span><p>One line on what the room was, one line on what's been reported, and what you're going to try.</p></div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section aria-labelledby="vigil">
+  <span class="label">Every room, every time</span>
+  <h2 id="vigil">How to run a vigil</h2>
+  <p>The same steps in every room make the night easier to film and much faster to edit.</p>
+  <ol class="steps">
+    <li><div><b>Clap and log it</b><span>One loud clap in view of both cameras, then tap Vigil start / clap in the SHP Log.</span></div></li>
+    <li><div><b>Say where you are</b><span>Room name and time out loud, plus who's in the room.</span></div></li>
+    <li><div><b>Two minutes of silence</b><span>Lights off, nobody talks. You hear what the room sounds like on its own, and it's often when things happen.</span></div></li>
+    <li><div><b>Introduce yourselves</b><span>Talk to whoever might be there, calmly and politely. Explain why you've come.</span></div></li>
+    <li><div><b>Questions with long pauses</b><span>Ask one at a time and leave a good 10 to 15 seconds after each one. Viewers need the silence to hear any answer.</span></div></li>
+    <li><div><b>Call out your own noises</b><span>"That was my stomach." "That was a car outside." Saying it out loud saves hours in the edit and makes the real moments believable.</span></div></li>
+    <li><div><b>Mark anything that happens</b><span>Tap Mark in the SHP Log straight away, then say out loud what you heard or saw.</span></div></li>
+    <li><div><b>Sum up before you leave</b><span>Lights on and 30 seconds to camera: what happened in here, and how did it feel? These make the best shorts.</span></div></li>
+  </ol>
+</section>
+
+<section aria-labelledby="questions">
+  <span class="label">Question bank</span>
+  <h2 id="questions">What to ask here</h2>
+  <p>Questions about this building's real history land better on camera than general ones. Mix them with yes or no questions so any knocks or device reactions have something to answer.</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Who it's for</th><th>Ask</th></tr></thead>
+      <tbody>
+        <tr><td>The man in period dress</td><td>Are you the gentleman the staff have seen? What's your name? Did you live in this house?</td></tr>
+        <tr><td>Soldiers of 1651</td><td>Did you fight for the king or for Parliament? Were you here when the soldiers came to the door? Do you know who won the battle?</td></tr>
+        <tr><td>The king</td><td>Charles, are you here? Were you afraid? Do you know you got away?</td></tr>
+        <tr><td>The oubliette</td><td>Were you held under this floor? How long were you kept down there? Did anyone come back for you?</td></tr>
+        <tr><td>The household</td><td>Did you work here? Do you like us being here? Can you knock once for yes and twice for no?</td></tr>
+        <tr><td>The carving</td><td>Did you play cards in this room? Can you move one of the cards for us?</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="wind">
+  <span class="label">The last half hour</span>
+  <h2 id="wind">How to wind down</h2>
+  <ol class="steps">
+    <li><div><b>Final vigil</b><span>Everyone back in the room that was most active. A short session and one last direct question.</span></div></li>
+    <li><div><b>Lights on and say goodbye</b><span>Tell whoever's there you're leaving and thank them. It's a nice moment on camera and it's respectful.</span></div></li>
+    <li><div><b>The verdict</b><span>The closing piece to camera, outside if you can. Each person answers one question: what was the moment of the night for you? Then your overall take, honestly.</span></div></li>
+    <li><div><b>Thank the venue on camera</b><span>Name the pub, say it's open to visit, and thank the staff. Venues share these, and it gets you invited back.</span></div></li>
+    <li><div><b>Tease the next location</b><span>One line about where you're going next.</span></div></li>
+    <li><div><b>Send the logs and pack down</b><span>Everyone taps Send log in the SHP Log. Check every room for kit before you leave, and stop the cameras last.</span></div></li>
+  </ol>
+  <div class="say">
+    <span class="label">Closing prompt</span>
+    <p>"The King Charles House was a king's last stop before six weeks on the run. Tonight we heard [the moment]. Was it him, a prisoner from under the floor, or something else? Tell us in the comments what you think."</p>
+  </div>
+  <div class="btnrow">
+    <a class="btn" href="../log/">Open the SHP Log</a>
+    <a class="btn ghost" href="../">Back to the edit plan</a>
+  </div>
+</section>
+
+<footer>
+  <p>Put together by Matt for Spooked Haunted Project. Accounts of the house differ in places. Where they do, this sheet says so, and the script says "tradition says" or "is said to". Keeping that on camera is part of what makes the evidence believable.</p>
+  <div>
+    <p class="label">Sources</p>
+    <ol>
+      <li><a href="https://www.mysteriesofmercia.com/post/king-charles-house-pub" target="_blank" rel="noopener">Mysteries of Mercia: The King Charles House</a> (escape story, carving, oubliette, reported activity)</li>
+      <li><a href="https://www.worcesterpeopleandplaces.org.uk/news/65/146/King-Charles-House.html" target="_blank" rel="noopener">Worcester People and Places: King Charles House</a> (built by Richard Durant, ownership)</li>
+      <li><a href="https://britishlistedbuildings.co.uk/101389751-king-charles-house-worcester-cathedral-ward" target="_blank" rel="noopener">British Listed Buildings: King Charles House</a> (listing and the 1577 inscription)</li>
+      <li><a href="https://www1.camra.org.uk/pubs/111435" target="_blank" rel="noopener">CAMRA: King Charles II, Worcester</a> (stairs, piano, oubliette, opening hours)</li>
+      <li><a href="https://theeuropeanbarguide.com/the-king-charles-house-worcester-%f0%9f%8f%b4%f3%a0%81%a7%f3%a0%81%a2%f3%a0%81%a5%f3%a0%81%ae%f3%a0%81%a7%f3%a0%81%bf/" target="_blank" rel="noopener">The European Bar Guide: The King Charles House</a> (past uses including judges' quarters)</li>
+      <li><a href="https://visitworcestershire.org/blog/raise-a-glass-to-these-historic-worcestershire-pubs" target="_blank" rel="noopener">Visit Worcestershire: historic pubs</a> (the dungeon beneath the floorboards)</li>
+      <li><a href="https://en.wikipedia.org/wiki/Battle_of_Worcester" target="_blank" rel="noopener">Wikipedia: Battle of Worcester</a> (armies, Fort Royal, casualties, prisoners)</li>
+      <li><a href="https://en.wikipedia.org/wiki/Escape_of_Charles_II" target="_blank" rel="noopener">Wikipedia: Escape of Charles II</a> (route, bounty, six weeks on the run)</li>
+      <li><a href="https://www.english-heritage.org.uk/visit/places/boscobel-house-and-the-royal-oak/history/" target="_blank" rel="noopener">English Heritage: Boscobel House and the Royal Oak</a></li>
+      <li><a href="https://ghostlyactivities.com/how-to-get-the-best-evidence-from-your-evp-sessions/" target="_blank" rel="noopener">Ghostly Activities: getting the best EVP evidence</a></li>
+    </ol>
+  </div>
+</footer>
+
+</div>
+<script>
+(function () {
+  var KEY = "shp-kch-checklist";
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
+  document.querySelectorAll("#checklist input").forEach(function (box) {
+    box.checked = !!saved[box.id];
+    box.addEventListener("change", function () {
+      saved[box.id] = box.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+    });
+  });
+})();
+</script>
+</body>
+</html>
