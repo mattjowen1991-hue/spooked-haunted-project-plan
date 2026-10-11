@@ -1,5 +1,5 @@
 // Keeps the log working with no signal. Bump VERSION when index.html changes.
-var VERSION = "shp-log-v1";
+var VERSION = "shp-log-v2";
 var FILES = ["./", "index.html", "manifest.webmanifest", "icon-192.png", "icon-512.png", "apple-touch-icon.png"];
 
 self.addEventListener("install", function (e) {

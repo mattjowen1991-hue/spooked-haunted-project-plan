@@ -241,7 +241,7 @@ tr.vg td { color: var(--muted); font-style: italic; }
 (function () {
   "use strict";
   var TYPES = ["Knock / bang", "Voice / EVP", "Footsteps", "Device reaction", "Touched", "Cold spot", "Shadow / figure", "Object moved", "Smell", "Team reaction", "Funny moment", "Explained"];
-  var CAMS = ["A", "B", "Both", "Phone"];
+  var CAMS = ["A", "B", "GoPro", "All", "Phone"];
   var DEFAULT_ROOMS = ["Cellar", "Bar", "Upstairs"];
   var KEY = "shp-log-v1";
 
@@ -249,7 +249,7 @@ tr.vg td { color: var(--muted); font-style: italic; }
   var editingId = null;
   var deleteArmed = false;
 
-  function blank() { return { location: "", who: "", date: today(), rooms: DEFAULT_ROOMS.slice(), lastRoom: "", lastCam: "Both", entries: [] }; }
+  function blank() { return { location: "", who: "", date: today(), rooms: DEFAULT_ROOMS.slice(), lastRoom: "", lastCam: "All", entries: [] }; }
   function load() {
     try { var s = JSON.parse(localStorage.getItem(KEY)); if (s && Array.isArray(s.entries)) return s; } catch (e) {}
     return blank();
@@ -284,7 +284,7 @@ tr.vg td { color: var(--muted); font-style: italic; }
 
   // Marks
   function addEntry(kind) {
-    var e = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), ts: Date.now(), kind: kind, type: "", room: state.lastRoom || "", stars: 0, cam: state.lastCam || "Both", note: "" };
+    var e = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), ts: Date.now(), kind: kind, type: "", room: state.lastRoom || "", stars: 0, cam: state.lastCam || "All", note: "" };
     state.entries.push(e); save(); render();
     try { if (navigator.vibrate) navigator.vibrate(40); } catch (err) {}
     return e;
