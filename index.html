@@ -3,15 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta property="og:title" content="Spooked Haunted Project Edit Plan">
-<meta property="og:description" content="How each investigation becomes a tight episode, a set of shorts and the odd live vigil.">
-<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>Spooked Haunted Project Edit Plan</title>
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="SHP CapCut Guide">
+<meta property="og:description" content="Edit a Spooked Haunted Project investigation in CapCut, step by step, in an evening instead of days.">
+<title>SHP CapCut Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
-/* Layout: a single-column shoot run sheet. Viewfinder hero, then numbered-by-purpose sections read top to bottom on a phone. */
-/* Deliberately single-theme: black and white, like infrared night footage. */
+/* Layout: one column, numbered steps in the order you actually edit. Black and white like night footage. */
 :root {
   --bg: #0a0a0a;
   --surface: #121212;
@@ -27,44 +26,43 @@
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
 body {
+  margin: 0;
   background: radial-gradient(ellipse at 50% 0%, #1c1c1c 0%, var(--bg) 60%) fixed, var(--bg); color: var(--fg);
   font-family: var(--font-body); font-size: 17px; line-height: 1.6;
-  padding-inline: 18px; padding-block: 0 48px;
+  padding-inline: 18px; padding-block: env(safe-area-inset-top, 0px) 64px;
 }
 body::after {
   content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 10; opacity: .09;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-.hero h1 { text-shadow: 0 0 18px rgba(255,255,255,.18); }
-.wrap { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px; }
+.wrap { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 52px; }
 h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.15; text-wrap: balance; margin: 0; }
 h2 { font-size: 2rem; }
 h3 { font-size: 1.3rem; }
 p { margin: 0; max-width: 65ch; }
 a { color: var(--accent); }
-a.src { text-decoration: underline; text-decoration-style: dotted; text-decoration-thickness: 1px; text-underline-offset: 3px; color: inherit; }
-a.src:hover { text-decoration-style: solid; }
-td.n a.src { color: var(--accent); }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.label {
-  font-family: var(--font-mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
-}
+a.src { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.label { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 section { display: flex; flex-direction: column; gap: 16px; }
-.lead { font-size: 1.08rem; }
 .muted { color: var(--muted); }
 ul.plain { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 8px; }
 ul.plain li::marker { color: var(--accent); }
+.note { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 12px 14px; border-radius: 0 4px 4px 0; }
+.warn { border-left: 3px solid var(--rec); background: rgba(229,72,77,.08); padding: 12px 14px; border-radius: 0 4px 4px 0; }
+kbd { font-family: var(--font-mono); font-size: .82em; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 1px 6px; background: var(--surface); white-space: nowrap; }
+.menu { font-family: var(--font-mono); font-size: .88em; background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: 0 5px; white-space: nowrap; }
 
-/* Hero viewfinder */
-.hero { padding-top: 28px; display: flex; flex-direction: column; gap: 20px; }
-.viewfinder {
-  position: relative; border: 1px solid var(--line); border-radius: 4px;
-  padding: 22px 20px 20px; background: var(--surface);
-}
-.viewfinder::before, .viewfinder::after {
-  content: ""; position: absolute; width: 18px; height: 18px; border-color: var(--accent); border-style: solid;
-}
+nav.jump { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: rgba(10,10,10,.92); backdrop-filter: blur(6px); margin-inline: -18px; padding: 10px 18px; border-bottom: 1px solid var(--line); overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+nav.jump::-webkit-scrollbar { display: none; }
+nav.jump a { font-family: var(--font-mono); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); text-decoration: none; margin-right: 18px; }
+
+.hero { padding-top: 24px; }
+.viewfinder { position: relative; border: 1px solid var(--line); border-radius: 4px; padding: 22px 20px 20px; background: var(--surface); display: flex; flex-direction: column; gap: 14px; }
+.viewfinder::before, .viewfinder::after { content: ""; position: absolute; width: 18px; height: 18px; border-color: var(--accent); border-style: solid; }
 .viewfinder::before { top: 8px; left: 8px; border-width: 2px 0 0 2px; }
 .viewfinder::after { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; }
 .vf-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; font-family: var(--font-mono); font-size: .78rem; color: var(--muted); }
@@ -72,304 +70,323 @@ ul.plain li::marker { color: var(--accent); }
 .rec i { width: 9px; height: 9px; border-radius: 50%; background: var(--rec); display: inline-block; animation: blink 1.6s steps(1) infinite; }
 @keyframes blink { 50% { opacity: .2; } }
 @media (prefers-reduced-motion: reduce) { .rec i { animation: none; } }
-.tc { font-variant-numeric: tabular-nums; }
-.hero h1 { font-size: clamp(2.3rem, 9vw, 3.6rem); margin-top: 18px; }
-.hero h1 em { color: var(--accent); font-style: italic; }
-.hero .from { margin-top: 14px; }
+.hero h1 { font-size: clamp(2.3rem, 9vw, 3.4rem); text-shadow: 0 0 18px rgba(255,255,255,.18); margin-top: 6px; }
+.hero h1 em { font-style: italic; }
 
-/* Summary strip */
-.summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
-.summary div { background: var(--bg); padding: 14px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-.summary strong { font-family: var(--font-display); font-size: 1.45rem; font-weight: 400; line-height: 1.2; }
-.summary span { font-size: .9rem; color: var(--muted); line-height: 1.4; }
+/* Big idea */
+.compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.compare > div { border: 1px solid var(--line); border-radius: 6px; padding: 14px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.compare .label { color: var(--fg); }
+.compare ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 4px; color: var(--muted); font-size: .95rem; }
+.compare .good ol { color: var(--fg); }
+.compare .good { border-color: var(--accent); }
 
-/* Run sheet */
+/* Steps */
+.step { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; scroll-margin-top: 60px; }
+.step > header { padding: 14px 16px; background: var(--surface); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: center; }
+.step .num { font-family: var(--font-display); font-size: 2.2rem; line-height: 1; width: 2.2rem; text-align: center; }
+.step > header h3 { font-size: 1.4rem; }
+.step > header p { color: var(--muted); font-size: .9rem; margin-top: 2px; }
+.step .body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 12px; }
+.step ol.do { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 8px; }
+.step ol.do li::marker { font-family: var(--font-mono); font-size: .85em; color: var(--muted); }
+.time { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
 .runsheet { border-top: 1px solid var(--line); }
-.row { display: grid; grid-template-columns: 4.6rem 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); }
-.row .t { font-family: var(--font-mono); font-size: .82rem; color: var(--accent); padding-top: 3px; font-variant-numeric: tabular-nums; }
+.row { display: grid; grid-template-columns: 4.6rem 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.row .t { font-family: var(--font-mono); font-size: .82rem; padding-top: 3px; font-variant-numeric: tabular-nums; }
 .row b { display: block; }
 .row p { color: var(--muted); font-size: .95rem; }
 
-.note { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 12px 14px; border-radius: 0 4px 4px 0; }
-
-/* Platforms */
-.platforms { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
-.plat { border: 1px solid var(--line); border-radius: 4px; padding: 14px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-.plat .role { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
-.plat h3 { font-size: 1.2rem; }
-.plat p { font-size: .95rem; color: var(--muted); }
-
-/* Month grid */
-.month { display: grid; grid-template-columns: 2.4rem repeat(7, 1fr); gap: 4px; font-family: var(--font-mono); font-size: .72rem; }
-.month .hd { color: var(--muted); text-align: center; padding-bottom: 2px; }
-.month .wk { color: var(--muted); display: flex; align-items: center; }
-.month .d { aspect-ratio: 1; max-width: 100%; border: 1px solid var(--line); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-weight: 600; min-width: 0; }
-.d.inv { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-.d.main { border: 2px solid var(--accent); color: var(--accent); }
-.d.short { background: var(--accent-soft); color: var(--fg); }
-.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: .88rem; color: var(--muted); }
-.legend span { display: inline-flex; align-items: center; gap: 8px; }
-.legend .d { width: 22px; height: 22px; aspect-ratio: auto; font-size: .65rem; font-family: var(--font-mono); }
-
-/* Table */
 .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 4px; }
 table { border-collapse: collapse; width: 100%; font-size: .93rem; }
 th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
 th { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
 tr:last-child td { border-bottom: 0; }
-td.n { font-family: var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--accent); }
+td.k { white-space: nowrap; }
 
-/* Incident log */
-.log { border: 1px dashed var(--line); border-radius: 4px; padding: 14px; display: flex; flex-direction: column; gap: 12px; }
-.log pre { margin: 0; font-family: var(--font-mono); font-size: .82rem; white-space: pre-wrap; color: var(--fg); overflow-x: auto; }
-button.copy {
-  align-self: flex-start; font: 600 .85rem var(--font-body); color: var(--bg); background: var(--accent);
-  border: 0; border-radius: 3px; padding: 9px 14px; cursor: pointer;
-}
+.pro { display: inline-block; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; border-radius: 999px; padding: 1px 8px; border: 1px solid var(--line); color: var(--muted); }
+.pro.free { border-color: var(--accent); color: var(--fg); }
 
-.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-.two > div { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.btn { display: inline-block; font: 600 .95rem var(--font-body); color: var(--bg); background: var(--accent); border-radius: 4px; padding: 11px 16px; text-decoration: none; }
 
 footer { border-top: 1px solid var(--line); padding-top: 20px; display: flex; flex-direction: column; gap: 14px; font-size: .9rem; color: var(--muted); }
 footer ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 4px; }
 </style>
 </head>
 <body>
-
 <div class="wrap">
 
 <header class="hero">
   <div class="viewfinder">
     <div class="vf-top">
       <span class="rec"><i></i>REC</span>
-      <span>CAM A + CAM B + GOPRO</span>
-      <span class="tc">00:23:41:12</span>
+      <span>CANON A + CANON B + GOPRO</span>
     </div>
-    <h1>Spooked Haunted Project <em>edit plan</em></h1>
-    <p class="from lead">You've built 10K subscribers and a run of episodes pulling 20K views or more. This is how I'd help keep that going: taking the editing off your hands so you can focus on the investigations. You know your channel best, so treat all of this as a starting point to pick apart.</p>
-    <p class="label from">From Matt · October 2026</p>
+    <h1>Editing in <em>CapCut</em></h1>
+    <p>Alan, this is a step-by-step way to edit an investigation in CapCut on your computer, so it takes an evening or two instead of days. You don't need to be an editor. Follow the steps in order and it'll get quicker every episode.</p>
+    <p class="label">From Matt · Built for CapCut on Windows or Mac</p>
   </div>
 </header>
 
-<section aria-labelledby="short">
-  <span class="label">The short version</span>
-  <h2 id="short">Per investigation</h2>
-  <div class="summary">
-    <div><strong>1 tight episode</strong><span>Around 35 to 50 minutes, longer only when the night earns it</span></div>
-    <div><strong>4 to 5 shorts</strong><span>Under 60 seconds, cut from the same footage</span></div>
-    <div><strong>Same day, same time</strong><span>Episodes land on a predictable evening slot</span></div>
-    <div><strong>You approve</strong><span>Every edit comes to you to check, then you upload it when you're happy</span></div>
+<nav class="jump" aria-label="Jump to section">
+  <a href="#idea">The big idea</a><a href="#s1">Set up</a><a href="#s3">Sync</a><a href="#s4">Find</a><a href="#s5">Cut</a><a href="#s6">Build</a><a href="#s8">Export</a><a href="#s9">Shorts</a><a href="#keys">Shortcuts</a><a href="#free">Free or paid</a>
+</nav>
+
+<section aria-labelledby="idea">
+  <span class="label">Why it's taking days</span>
+  <h2 id="idea">The big idea</h2>
+  <p>Most of the time goes on watching everything, start to finish, on every camera. A three-camera night is many hours of footage, and you can't edit faster than you can watch. The trick is to stop watching it all, find the moments first, then cut everything in between.</p>
+  <div class="compare">
+    <div>
+      <span class="label">The slow way</span>
+      <ol>
+        <li>Load everything</li>
+        <li>Watch it all from the start</li>
+        <li>Trim as you go</li>
+        <li>Lose track, start again</li>
+      </ol>
+    </div>
+    <div class="good">
+      <span class="label">The quick way</span>
+      <ol>
+        <li>Line the three cameras up once</li>
+        <li>Jump straight to the moments</li>
+        <li>Keep those, bin the rest</li>
+        <li>Arrange them into the episode</li>
+      </ol>
+    </div>
   </div>
 </section>
 
-<section aria-labelledby="help">
-  <span class="label">What I'd take off your hands</span>
-  <h2 id="help">You investigate, I edit</h2>
-  <p>The idea is that you focus on the night itself and hand the footage over. For each investigation I would:</p>
-  <ul class="plain">
-    <li>Sync all three cameras and cut between the angles so the action always has the best view</li>
-    <li>Cut the walking, waiting and setting up, so the episode moves from one moment to the next</li>
-    <li>Clean up the audio, and replay and caption anything you catch so viewers can hear it too</li>
-    <li>Build the history segment around your drone footage, with title cards</li>
-    <li>Cut the shorts from the same edit</li>
-    <li>Note chapter timestamps for each room, ready to paste in when you upload</li>
-    <li>Put the finished episode and shorts in the shared Drive, ready for you to download and upload</li>
-  </ul>
-  <p class="muted">Turnaround target: the episode ready for your review within a week of the investigation.</p>
+<section aria-labelledby="steps">
+  <span class="label">Step by step</span>
+  <h2 id="steps">Edit an investigation</h2>
+
+  <article class="step" id="s1">
+    <header><span class="num">1</span><div><h3>Get the files in order</h3><p>Before you open CapCut</p></div></header>
+    <div class="body">
+      <span class="time">About 10 minutes</span>
+      <ol class="do">
+        <li>Make one folder for the investigation, with a folder inside for each camera: <span class="menu">Canon A</span>, <span class="menu">Canon B</span>, <span class="menu">GoPro</span>, <span class="menu">Drone</span>.</li>
+        <li>Copy each memory card into its own folder. Don't mix cameras, because the Canons name their files in the same way.</li>
+        <li>Keep everything on one drive, ideally a fast external SSD or your computer's main drive. Editing straight off a memory card or a slow USB stick is painfully slow.</li>
+      </ol>
+    </div>
+  </article>
+
+  <article class="step" id="s2">
+    <header><span class="num">2</span><div><h3>Start the project</h3><p>And stop CapCut lagging</p></div></header>
+    <div class="body">
+      <span class="time">About 5 minutes</span>
+      <ol class="do">
+        <li>Open CapCut and click <span class="menu">Create project</span>.</li>
+        <li>Drag the camera folders into the media panel at the top left.</li>
+        <li><b>Turn on proxies.</b> GoPro and Canon files are big, and big files make the timeline stutter. In the project settings, find <span class="menu">Performance</span> and switch on <span class="menu">Proxy</span> at 720p. CapCut makes small copies to edit with, but still exports from the full-quality originals. On some versions the settings are behind a <span class="menu">Modify</span> button at the top right.</li>
+        <li>Set the project to 1080p and the same frame rate as the Canons.</li>
+      </ol>
+      <p class="note">This one setting is often the difference between CapCut being smooth and CapCut being unusable with long footage.</p>
+    </div>
+  </article>
+
+  <article class="step" id="s3">
+    <header><span class="num">3</span><div><h3>Line up the three cameras</h3><p>One vigil at a time</p></div></header>
+    <div class="body">
+      <span class="time">About 5 minutes a vigil</span>
+      <p>This is why the team claps at the start of every vigil. On the timeline, the clap shows up as a sharp spike in each camera's sound wave, so you can line them up by eye.</p>
+      <h3>The simple way, works on the free version</h3>
+      <ol class="do">
+        <li>Put the GoPro clip on the bottom track. It's the wide shot that covers everything, so it's your safety net.</li>
+        <li>Put Canon A on the track above it, and Canon B above that.</li>
+        <li>Zoom into the timeline (<kbd>Ctrl</kbd> <kbd>+</kbd>, or <kbd>Cmd</kbd> <kbd>+</kbd> on a Mac) and drag each clip left or right until the clap spikes sit exactly on top of each other.</li>
+        <li>Mute all but the camera with the best sound, usually the Canon closest to whoever's talking. Otherwise you'll hear an echo.</li>
+      </ol>
+      <p>To switch angles, cut the top clips and delete the bits you don't want. Whatever's underneath shows through. So deleting a section of Canon B shows Canon A, and deleting both shows the GoPro.</p>
+      <h3>The quicker way, if your version has it</h3>
+      <p>CapCut also has a <a class="src" href="https://www.capcut.com/resource/multicam-editing" target="_blank" rel="noopener">multi-camera tool</a>. Select the three clips, right-click, choose <span class="menu">Create multi-camera clip</span> and pick <span class="menu">Audio</span> to sync. You then click between angles in the preview while it plays. If it shows a Pro badge, use the simple way above instead. It does the same job.</p>
+    </div>
+  </article>
+
+  <article class="step" id="s4">
+    <header><span class="num">4</span><div><h3>Find the moments</h3><p>The step that saves the most time</p></div></header>
+    <div class="body">
+      <span class="time">About 30 minutes for the whole night</span>
+      <p>Don't watch it all. Find the good bits first, then drop a marker on each one so you can jump back to it.</p>
+      <ol class="do">
+        <li><b>Use the log.</b> If the team used the <a href="log/">SHP Log</a> on the night, the times of every knock, voice and reaction are already written down. The <span class="menu">Combine</span> tab even says how far into each vigil it happened, counted from the clap.</li>
+        <li><b>Read the sound wave.</b> Bangs, shouts, voices and laughter show up as spikes. Long flat stretches are usually people standing in silence, which is exactly what gets cut.</li>
+        <li><b>Listen for the call-outs.</b> When someone says "did you hear that?", the moment is just before it.</li>
+        <li><b>Mark it.</b> Put the playhead on the moment and press <kbd>M</kbd> to drop a marker.</li>
+      </ol>
+    </div>
+  </article>
+
+  <article class="step" id="s5">
+    <header><span class="num">5</span><div><h3>Cut out the waiting</h3><p>Keep the moments, bin the rest</p></div></header>
+    <div class="body">
+      <span class="time">About 1 to 2 hours</span>
+      <p>Two keys do most of the work, and they close the gap for you automatically:</p>
+      <ul class="plain">
+        <li><kbd>Q</kbd> deletes everything to the left of the playhead</li>
+        <li><kbd>W</kbd> deletes everything to the right of the playhead</li>
+      </ul>
+      <p>To cut a boring stretch out of the middle, put the playhead where it starts and press <kbd>Ctrl</kbd> <kbd>B</kbd> (<kbd>Cmd</kbd> <kbd>B</kbd> on a Mac) to split. Do the same where it ends, click the piece in between and press <kbd>Delete</kbd>.</p>
+      <h3>What to keep</h3>
+      <ul class="plain">
+        <li>Anything that happened, plus a few seconds before it and the reaction after</li>
+        <li>The questions that got a response</li>
+        <li>Genuine reactions and funny moments</li>
+        <li>The bits where you debunk something. They make the real moments more believable.</li>
+      </ul>
+      <h3>What to cut</h3>
+      <ul class="plain">
+        <li>Walking between rooms, setting up and packing down</li>
+        <li>Questions that got nothing back. Keep one or two so viewers feel the wait, cut the rest.</li>
+        <li>Long silences. A few seconds builds tension, a minute loses viewers.</li>
+      </ul>
+      <p class="note">Rule of thumb: if you wouldn't call someone over to watch it, cut it.</p>
+    </div>
+  </article>
+
+  <article class="step" id="s6">
+    <header><span class="num">6</span><div><h3>Put the episode in order</h3><p>The shape the big shows use</p></div></header>
+    <div class="body">
+      <span class="time">About 1 hour</span>
+      <p>Once the vigils are trimmed, drag the pieces into this order. Aim for 35 to 50 minutes in total.</p>
+      <div class="runsheet">
+        <div class="row"><span class="t">0:00</span><div><b>Cold open</b><p>The best moment of the night, before anything else. This is what keeps people watching.</p></div></div>
+        <div class="row"><span class="t">0:45</span><div><b>Title</b><p>Your intro, short. Save it once and reuse it every episode.</p></div></div>
+        <div class="row"><span class="t">1:00</span><div><b>The location</b><p>Drone shots and the history of the place.</p></div></div>
+        <div class="row"><span class="t">4:00</span><div><b>The team and the plan</b><p>Who's there and what you're hoping to find.</p></div></div>
+        <div class="row"><span class="t">6:00</span><div><b>The vigils</b><p>Room by room, in the order you did them.</p></div></div>
+        <div class="row"><span class="t">35:00</span><div><b>Evidence review</b><p>Replay the best moments. See step 7.</p></div></div>
+        <div class="row"><span class="t">42:00</span><div><b>Verdict</b><p>What you made of the night, a question for the comments, and where you're going next.</p></div></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="step" id="s7">
+    <header><span class="num">7</span><div><h3>Make the evidence clear</h3><p>So viewers hear what you heard</p></div></header>
+    <div class="body">
+      <span class="time">About 30 minutes</span>
+      <ol class="do">
+        <li><b>Play it twice.</b> Copy the moment and play it again straight after. First as it happened, then the replay.</li>
+        <li><b>Turn it up.</b> Select the clip, open the audio settings on the right and raise the volume for the replay.</li>
+        <li><b>Caption it.</b> Add a text box saying what you think was said or heard, like <i>"Get out?"</i>. Add it by hand with <span class="menu">Text</span>, so it works on the free version.</li>
+        <li><b>Freeze or zoom.</b> For something seen, use the <span class="menu">Freeze</span> button above the timeline to hold the frame, and zoom in on the spot.</li>
+        <li><b>Be honest.</b> Label the replay as enhanced, and don't add effects that weren't there. Viewers trust a team that shows its working.</li>
+      </ol>
+    </div>
+  </article>
+
+  <article class="step" id="s8">
+    <header><span class="num">8</span><div><h3>Export</h3><p>Ready for YouTube</p></div></header>
+    <div class="body">
+      <span class="time">Set it running, then make a cuppa</span>
+      <ol class="do">
+        <li>Click <span class="menu">Export</span> at the top right.</li>
+        <li>Resolution <b>1080p</b>, frame rate to match your project, format <b>MP4</b>, codec <b>H.264</b>.</li>
+        <li>Pick the higher quality bitrate option if there's a choice.</li>
+        <li>Before you upload, write down the time each room starts. Paste them into the YouTube description as chapters, like <i>12:40 The cellar</i>, so viewers can jump around.</li>
+      </ol>
+      <p class="warn">If 4K export or anything else shows a lock or Pro badge, it'll ask you to pay or add a watermark. 1080p looks great on YouTube and keeps you on the free version.</p>
+    </div>
+  </article>
+
+  <article class="step" id="s9">
+    <header><span class="num">9</span><div><h3>Make the Shorts</h3><p>From the same edit</p></div></header>
+    <div class="body">
+      <span class="time">About 10 minutes each</span>
+      <ol class="do">
+        <li>Go back to the CapCut home screen, find the project and duplicate it.</li>
+        <li>Open the copy and change the ratio to <b>9:16</b> (portrait).</li>
+        <li>Keep one moment, 20 to 60 seconds long, and delete everything else.</li>
+        <li>Zoom each clip in so the person or the spot fills the frame. If they move around, use keyframes to follow them.</li>
+        <li>Add a caption at the top saying what happened, then export the same way.</li>
+      </ol>
+      <p class="muted">CapCut's automatic reframe does the zooming for you, but it's now a paid feature. Doing it by hand only takes a few minutes.</p>
+    </div>
+  </article>
 </section>
 
-<section aria-labelledby="main">
-  <span class="label">The main episode</span>
-  <h2 id="main">Every minute earns its place</h2>
-  <p>This is the biggest change I'd suggest, so here's the research behind it rather than just my opinion.</p>
-
-  <h3>What YouTube says</h3>
-  <p>YouTube's own creator guidance <a class="src" href="https://support.google.com/youtube/answer/16559651" target="_blank" rel="noopener">says there's no ideal length</a>, and tells creators to avoid filler and not stretch content out. Recommendations aren't based on raw minutes. YouTube measures what it calls <a class="src" href="https://blog.youtube/inside-youtube/on-youtubes-recommendation-system/" target="_blank" rel="noopener">valued watch time</a>, which comes from viewers rating videos in satisfaction surveys, alongside likes and shares. An hour where people drift off or skip around counts for less than 40 minutes they enjoyed all the way through.</p>
-
-  <h3>What the best in the genre do</h3>
-  <p>Length on its own isn't the problem. Plenty of big channels run long. The difference is how hard they cut.</p>
+<section aria-labelledby="keys">
+  <span class="label">Keep this handy</span>
+  <h2 id="keys">Keyboard shortcuts</h2>
+  <p>On a Mac, use <kbd>Cmd</kbd> wherever it says <kbd>Ctrl</kbd>. If one doesn't work on your version, click the keyboard icon in CapCut's top bar for the full list.</p>
   <div class="tablewrap">
     <table>
-      <thead><tr><th>Who</th><th>Episode length</th><th>How they get there</th></tr></thead>
+      <thead><tr><th>Press</th><th>What it does</th></tr></thead>
       <tbody>
-        <tr><td>Ghost Adventures (TV)</td><td class="n"><a class="src" href="https://thetvdb.com/series/ghost-adventures/seasons/official/26" target="_blank" rel="noopener">about 42 min</a></td><td>Zak Bagans has <a class="src" href="https://www.mentalfloss.com/article/640719/zak-bagans-ghost-adventures-facts" target="_blank" rel="noopener">described reviewing 20 hours of footage</a> from a couple of cameras, with the flagged moments shaping the episode</td></tr>
-        <tr><td>Ghost Hunters (TV)</td><td class="n"><a class="src" href="https://en.wikipedia.org/wiki/Ghost_Hunters_(TV_series)" target="_blank" rel="noopener">about 46 min</a></td><td>A five-day Stanley Hotel case was <a class="src" href="https://geekdad.com/2015/08/jason-hawes/" target="_blank" rel="noopener">cut to look like a couple of hours</a></td></tr>
-        <tr><td>Most Haunted (TV)</td><td class="n"><a class="src" href="https://en.wikipedia.org/wiki/Most_Haunted" target="_blank" rel="noopener">45 min</a></td><td>Reportedly has <a class="src" href="https://www.higgypop.com/news/things-you-never-knew-about-most-haunted/" target="_blank" rel="noopener">dozens of episodes left unaired</a> because too little happened</td></tr>
-        <tr><td>Ghost Files (YouTube)</td><td class="n"><a class="src" href="https://thetvdb.com/series/ghost-files/seasons/official/5" target="_blank" rel="noopener">52 to 58 min</a></td><td><a class="src" href="https://thetvdb.com/series/ghost-files/seasons/official/5" target="_blank" rel="noopener">Split a 24-hour investigation</a> into three parts of around 30 minutes</td></tr>
-        <tr><td>Adam Mark Explores (UK, 405K)</td><td class="n">47 min</td><td rowspan="4"><a class="src" href="https://ytubeinfluencers.com/category/paranormal/country/united-kingdom/" target="_blank" rel="noopener">Example uploads from UK investigation channels</a> bigger than yours. Across 16 UK channels the example videos averaged about 34 minutes.</td></tr>
-        <tr><td>Ghost Theory (UK, 191K)</td><td class="n">52 min</td></tr>
-        <tr><td>Ouija Brothers (UK, 128K)</td><td class="n">43 min</td></tr>
-        <tr><td>Haunted Finders (UK, 113K)</td><td class="n">39 min</td></tr>
+        <tr><td class="k"><kbd>Space</kbd></td><td>Play and pause</td></tr>
+        <tr><td class="k"><kbd>Ctrl</kbd> <kbd>B</kbd></td><td>Split the clip at the playhead</td></tr>
+        <tr><td class="k"><kbd>Q</kbd></td><td>Delete everything left of the playhead and close the gap</td></tr>
+        <tr><td class="k"><kbd>W</kbd></td><td>Delete everything right of the playhead and close the gap</td></tr>
+        <tr><td class="k"><kbd>Delete</kbd></td><td>Delete the selected clip</td></tr>
+        <tr><td class="k"><kbd>M</kbd></td><td>Drop a marker</td></tr>
+        <tr><td class="k"><kbd>Ctrl</kbd> <kbd>+</kbd> / <kbd>-</kbd></td><td>Zoom the timeline in and out</td></tr>
+        <tr><td class="k"><kbd>Shift</kbd> <kbd>Z</kbd></td><td>Fit the whole timeline on screen</td></tr>
+        <tr><td class="k"><kbd>Ctrl</kbd> <kbd>Z</kbd></td><td>Undo</td></tr>
+        <tr><td class="k"><kbd>N</kbd></td><td>Turn snapping on or off</td></tr>
       </tbody>
     </table>
   </div>
-  <p>The pattern: TV cuts a whole night down to under an hour, and the UK channels a step or two ahead of you mostly sit between 40 and 50 minutes. When a night is quiet, the professionals cut harder or don't air it. When a night is huge, they split it into parts rather than one marathon.</p>
+</section>
 
-  <h3>What viewers say they want</h3>
-  <p>In a <a class="src" href="https://higgypop.com/news/distrust-of-paranormal-tv-shows-is-sending-viewers-to-youtube" target="_blank" rel="noopener">2023 survey of over 1,000 paranormal fans</a> by Higgypop, 64% said over-dramatisation was their biggest frustration with ghost hunting shows, and 69% wanted more local folklore. People come for real moments and real history, not for the walk between rooms.</p>
-
-  <h3>What I'd suggest</h3>
-  <ul class="plain">
-    <li><b>Aim for 35 to 50 minutes</b> for a typical night. Let the night decide: a quiet one might be 30, a busy one 50.</li>
-    <li><b>The keep test.</b> Every minute shows activity, history, a story beat or a genuine reaction. If it's walking, waiting or setting up, it goes.</li>
-    <li><b>Big nights become two-parters.</b> That's two uploads from one investigation instead of one long one.</li>
-    <li><b>Chapters for each room</b> so viewers can jump around without leaving the video.</li>
-  </ul>
-  <p class="note">A suggestion for trying it: make the next three episodes tighter, then compare them with the last three in YouTube Studio. Look at average view duration, <a class="src" href="https://support.google.com/youtube/answer/9314415" target="_blank" rel="noopener">how many people are still watching after 30 seconds</a>, and likes per view. If the long format does better, we go back to it.</p>
-
-  <h3>Example run sheet: The King Charles House, Worcester</h3>
-  <div class="runsheet">
-    <div class="row"><span class="t">00:00</span><div><b>Cold open</b><p>The single best moment of the night, straight away. No intro first.</p></div></div>
-    <div class="row"><span class="t">00:45</span><div><b>Title sting</b><p>Five seconds, same every episode.</p></div></div>
-    <div class="row"><span class="t">01:00</span><div><b>The history</b><p>Built in 1577 and <a class="src" href="https://britishlistedbuildings.co.uk/101389751-king-charles-house-worcester-cathedral-ward" target="_blank" rel="noopener">Grade II* listed</a>. In 1651, after the Battle of Worcester, <a class="src" href="https://www.worcesterpeopleandplaces.org.uk/news/65/146/King-Charles-House.html" target="_blank" rel="noopener">tradition says</a> Charles II slipped out the back as Parliamentarian troops reached the front door. <a class="src" href="https://www.worcesterpeopleandplaces.org.uk/news/65/146/King-Charles-House.html" target="_blank" rel="noopener">Historians even disagree</a> on who owned it at the time, which is a nice detail to share on camera.</p></div></div>
-    <div class="row"><span class="t">04:00</span><div><b>Team and kit</b><p>Who's here, what we're using, what we're hoping to find.</p></div></div>
-    <div class="row"><span class="t">06:00</span><div><b>Vigils, one chapter per room</b><p>The core of the episode, cut between the two Canons and the GoPro, moving from moment to moment.</p></div></div>
-    <div class="row"><span class="t">34:00</span><div><b>Evidence review</b><p>Each moment replayed, untouched first and then enhanced, clearly labelled. Anything you explained away goes in too.</p></div></div>
-    <div class="row"><span class="t">42:00</span><div><b>Verdict and next location</b><p>Your take on the night, a question for the comments, and a tease of the next investigation.</p></div></div>
+<section aria-labelledby="free">
+  <span class="label">Free or paid</span>
+  <h2 id="free">You can do all of this for free</h2>
+  <p>CapCut moved some features behind its paid plan in 2025, and its own pages don't fully agree on which ones. The easy rule: if a button has a Pro badge or a lock on it, it'll ask you to pay or add a watermark when you export. Everything in the steps above has a free way of doing it.</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Feature</th><th>Free?</th><th>If it's locked</th></tr></thead>
+      <tbody>
+        <tr><td>Cutting, splitting, text, keyframes, freeze frame</td><td><span class="pro free">Free</span></td><td></td></tr>
+        <tr><td>1080p export</td><td><span class="pro free">Free</span></td><td></td></tr>
+        <tr><td>Multi-camera tool</td><td><span class="pro">Check</span></td><td>Stack the cameras on tracks (step 3)</td></tr>
+        <tr><td>Auto captions</td><td><span class="pro">Check</span></td><td>Type captions by hand for the key moments. YouTube also adds automatic subtitles for free.</td></tr>
+        <tr><td>Reduce noise</td><td><span class="pro">Paid</span></td><td>Turn the replay up and caption it instead</td></tr>
+        <tr><td>Auto reframe</td><td><span class="pro">Paid</span></td><td>Zoom by hand (step 9)</td></tr>
+        <tr><td>4K export</td><td><span class="pro">Paid</span></td><td>Export at 1080p</td></tr>
+      </tbody>
+    </table>
   </div>
-  <p><a class="copy" style="display:inline-block;text-decoration:none" href="https://mattjowen1991-hue.github.io/spooked-haunted-project-plan/king-charles-house/" target="_blank" rel="noopener">Open the full run sheet for the night</a></p>
-  <p class="note">Showing your working builds trust. Viewers in this genre are quick to call things fake, so when they see what you checked along the way, the moments you call "that one was evidence beyond doubt" carry far more weight.</p>
-
-  <h3>When to post</h3>
-  <p>For a UK audience, evenings and weekends are the busy times, and the usual advice is to <a class="src" href="https://www.shopify.com/blog/best-time-to-upload-to-youtube" target="_blank" rel="noopener">publish a couple of hours before your viewers are most active</a> so YouTube has time to pick the video up. If you don't already have a set slot, I'd suggest <b>Friday at around 6pm</b>, at the same time every episode, so people learn when to expect it. The Audience tab in YouTube Studio shows when your own viewers are online, so we can fine-tune it from real data.</p>
+  <p class="muted">If you ever do want the paid version, <a class="src" href="https://marcandrews.com/capcut-pro-price-uk-2026-plans-costs-best-deals/" target="_blank" rel="noopener">CapCut Pro was reported at £21.99 a month</a> in the UK in 2026. You don't need it for any of this.</p>
+  <p class="muted">One thing to know: <a class="src" href="https://www.techloy.com/capcuts-latest-terms-of-service-raises-big-questions-about-content-ownership/" target="_blank" rel="noopener">CapCut's terms</a> give it wide rights over content uploaded to its servers. If that bothers you, save projects on your computer rather than in CapCut's cloud space.</p>
 </section>
 
-<section aria-labelledby="talk">
-  <span class="label">Comments and likes</span>
-  <h2 id="talk">Turning views into conversation</h2>
-  <p>The episodes are clearly being watched. The next step is getting viewers to talk back. Comments and likes <a class="src" href="https://blog.youtube/inside-youtube/on-youtubes-recommendation-system/" target="_blank" rel="noopener">help YouTube decide what to recommend</a>, and they're what turns a viewer into someone who comes back for every episode. A few small habits that I can build into each edit:</p>
+<section aria-labelledby="first">
+  <span class="label">The first one</span>
+  <h2 id="first">Go easy on the first episode</h2>
   <ul class="plain">
-    <li><b>End on a question.</b> Ask one specific thing near the end, like "what do you think the knocks in the cellar were?", and pin the same question as the first comment.</li>
-    <li><b>Ask after the first big moment.</b> A quick like-and-subscribe nudge works better once viewers have been hooked than it does in the first minute.</li>
-    <li><b>Reply early.</b> Answering comments in the first couple of hours after release gets more people joining in.</li>
-    <li><b>Use the Posts tab.</b> Polls like "where should we investigate next?" are easy and give people a reason to come back between episodes.</li>
-    <li><b>Shorts that ask too.</b> A short that ends on "real or not?" pulls in comments on its own.</li>
+    <li>The first edit is always the slowest. Steps 3 to 5 get much quicker once you've done them a couple of times.</li>
+    <li>Save your intro, outro and title text the first time, and reuse them every episode.</li>
+    <li>Save often. CapCut autosaves, but it's worth pressing <kbd>Ctrl</kbd> <kbd>S</kbd> anyway.</li>
+    <li>Done is better than perfect. A tight 40 minutes beats a perfect 90.</li>
   </ul>
-</section>
-
-<section aria-labelledby="shorts">
-  <span class="label">Shorts</span>
-  <h2 id="shorts">How many, and where</h2>
-  <p><b>4 to 5 shorts per investigation</b>, so 8 to 10 a month or roughly two a week. <a class="src" href="https://www.argil.ai/blog/how-long-can-youtube-shorts-be" target="_blank" rel="noopener">Shorts under 90 seconds hold on to far more of their viewers</a> than longer ones, so I'd keep most of them between 20 and 60 seconds. One or two go out before the episode as teasers, the rest after, each pointing back to the full investigation.</p>
-  <div class="platforms">
-    <div class="plat"><span class="role">Home base</span><h3>YouTube Shorts</h3><p>Same channel as the episodes, and each short can link straight to the full investigation. This is the one that feeds your 10K subscribers.</p></div>
-    <div class="plat"><span class="role">Reach and comments</span><h3>TikTok</h3><p>Best for being found by people who've never heard of you, and it gets <a class="src" href="https://www.socialinsider.io/blog/tiktok-vs-reels-vs-shorts/amp/" target="_blank" rel="noopener">far more comments per video</a> than the other two.</p></div>
-    <div class="plat"><span class="role">Your existing audience</span><h3>Facebook Reels</h3><p>Your 1.7K Facebook followers are already there, so the same clips cost nothing extra to post.</p></div>
-  </div>
-  <p>Good shorts in this genre: the bang, knock or voice with a replay and captions; "did you hear that?" reactions; a 30-second history of the building over the drone shot; and short behind-the-scenes bits of setting up in the dark.</p>
-</section>
-
-<section aria-labelledby="live">
-  <span class="label">Going live</span>
-  <h2 id="live">Yes, but as a side dish</h2>
-  <p>Live works well alongside the edited episode, as long as it doesn't replace it. My suggestion is one short live segment per investigation: a single room or vigil, 20 to 40 minutes, streamed from a phone while the three cameras keep recording as normal.</p>
-  <div class="two">
-    <div>
-      <h3>Why it helps</h3>
-      <ul class="plain">
-        <li>Viewers feel part of the night and can ask questions in chat, which is exactly the conversation the channel needs</li>
-        <li>At the end you can tell them the full episode drops on Friday, which builds an audience for release day</li>
-        <li>The live is raw and real-time. The episode is the polished story of the whole night with every angle, the history and the evidence review. They do different jobs.</li>
-      </ul>
-    </div>
-    <div>
-      <h3>How to do it</h3>
-      <ul class="plain">
-        <li><b>YouTube and Facebook:</b> you're already well past the <a class="src" href="https://streamer.guide/guides/how-to-go-live-on-youtube" target="_blank" rel="noopener">YouTube subscriber</a> and <a class="src" href="https://developers.facebook.com/documentation/live-video-api/getting-started" target="_blank" rel="noopener">Facebook follower</a> minimums, so you can go live from the phone apps.</li>
-        <li><b>TikTok:</b> <a class="src" href="https://stackinfluence.com/blog/how-many-followers-on-tiktok-to-go-live-in-2026" target="_blank" rel="noopener">usually needs around 1,000 followers</a> there.</li>
-        <li>Turn live streaming on in YouTube Studio at least a day before the first time, because <a class="src" href="https://streamer.guide/guides/how-to-go-live-on-youtube" target="_blank" rel="noopener">activation can take up to 24 hours</a>.</li>
-        <li>Check the phone signal in the room first, as old buildings and cellars are often dead zones, and ask the venue if streaming is OK.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section aria-labelledby="month">
-  <span class="label">A month at a glance</span>
-  <h2 id="month">Two investigations a month</h2>
-  <div class="month" role="img" aria-label="Four week calendar. Investigations on Saturday of weeks 1 and 3. Episodes on Friday of weeks 2 and 4. Shorts on Tuesdays, Thursdays and Sundays across the month.">
-    <span></span><span class="hd">M</span><span class="hd">T</span><span class="hd">W</span><span class="hd">T</span><span class="hd">F</span><span class="hd">S</span><span class="hd">S</span>
-    <span class="wk">W1</span><span class="d"></span><span class="d short">S</span><span class="d"></span><span class="d short">S</span><span class="d"></span><span class="d inv">I</span><span class="d"></span>
-    <span class="wk">W2</span><span class="d"></span><span class="d short">S</span><span class="d"></span><span class="d"></span><span class="d main">E</span><span class="d"></span><span class="d short">S</span>
-    <span class="wk">W3</span><span class="d"></span><span class="d short">S</span><span class="d"></span><span class="d"></span><span class="d"></span><span class="d inv">I</span><span class="d"></span>
-    <span class="wk">W4</span><span class="d"></span><span class="d short">S</span><span class="d"></span><span class="d"></span><span class="d main">E</span><span class="d"></span><span class="d short">S</span>
-  </div>
-  <div class="legend">
-    <span><span class="d inv">I</span>Investigation (plus optional live)</span>
-    <span><span class="d main">E</span>Episode, Friday 6pm</span>
-    <span><span class="d short">S</span>Short</span>
-  </div>
-  <p class="muted">Dates are just to show the rhythm. The investigation dates drive everything else.</p>
-</section>
-
-<section aria-labelledby="cams">
-  <span class="label">Filming with three cameras</span>
-  <h2 id="cams">Small habits that save hours</h2>
-  <ul class="plain">
-    <li><b>Two Canons moving, one GoPro still.</b> CAM A and CAM B follow the team, ideally from different sides so they catch each other's reactions. The GoPro stays locked off covering the whole room, so if something happens off to one side, it's still caught. That mix of close-ups and a wide view is what makes the edit feel like a proper show.</li>
-    <li><b>Set the GoPro up first in every room.</b> Point it at the spot most likely to see activity, like the trigger object or a doorway, and leave it alone.</li>
-    <li><b>Clap at the start of every vigil.</b> One loud clap in view of all three cameras makes syncing almost instant.</li>
-    <li><b>Keep all three rolling for the whole vigil.</b> Stopping and starting is where the moment always gets missed. If the cameras split long recordings into chunks, that's fine. The GoPro battery may not last a whole night, so check it between rooms.</li>
-    <li><b>Say it out loud.</b> When something happens, someone calls out the time and what it was. It lands on the audio and helps me find it fast.</li>
-    <li><b>Grab the drone shots in daylight.</b> A minute or two of the outside is all the history segment needs.</li>
-  </ul>
-
-  <h3>The incident log</h3>
-  <p>The biggest time saver of all. Every episode comes from several hours of footage across three cameras, so a quick note of the moments that mattered goes a long way.</p>
-  <p>I've made a simple app for it. Tap <b>Mark</b> the moment something happens and the exact time is saved, then pick what it was and the room. It works with no signal, so it's fine in cellars, and at the end of the night you send the log to the WhatsApp group in one tap. One person can log for everyone, or each of you can use your own phone.</p>
-  <p><a class="copy" style="display:inline-block;text-decoration:none" href="https://mattjowen1991-hue.github.io/spooked-haunted-project-plan/log/" target="_blank" rel="noopener">Open the SHP Log</a></p>
-</section>
-
-<section aria-labelledby="need">
-  <span class="label">What I'd need from you</span>
-  <h2 id="need">To get started</h2>
-  <ul class="plain">
-    <li>The camera and audio kit list, so I can set the edit up to match</li>
-    <li>A shared Google Drive folder for footage, one folder per investigation, with each camera and the drone kept separate. <a class="src" href="https://drive.google.com/drive/folders/1lDsQjKzYDqh1UeRCGTb-g7U4yb_kzTpt" target="_blank" rel="noopener">It's set up and ready</a>.</li>
-    <li>The incident log from the night</li>
-    <li>Your logo files, any intro you use, and your fonts, so the title cards match what you already have</li>
-  </ul>
-</section>
-
-<section aria-labelledby="later">
-  <span class="label">Later, if it's useful</span>
-  <h2 id="later">Where this could go</h2>
-  <ul class="plain">
-    <li>Deeper location research before each investigation, so the history segments have real sources behind them</li>
-    <li>Write-ups of each investigation on <a href="https://theparanormalpad.com" target="_blank" rel="noopener">The Paranormal Pad</a>, linking back to your episodes for extra reach</li>
-  </ul>
+  <p><a class="btn" href="log/">Open the SHP Log</a></p>
 </section>
 
 <footer>
-  <p>Put together by Matt. Underlined words link to their source and open in a new tab. Platform rules change often, so the numbers above were checked in October 2026 and are worth a quick re-check before relying on them.</p>
+  <p>Put together by Matt. CapCut changes its menus and paid features often, so if something's moved, look for the same word nearby. Underlined words link to their source and open in a new tab.</p>
   <div>
     <p class="label">Sources</p>
     <ol>
-      <li><a href="https://support.google.com/youtube/answer/16559651" target="_blank" rel="noopener">YouTube Help: video length guidance</a></li>
-      <li><a href="https://blog.youtube/inside-youtube/on-youtubes-recommendation-system/" target="_blank" rel="noopener">YouTube Official Blog: how recommendations work</a></li>
-      <li><a href="https://support.google.com/youtube/answer/9314415" target="_blank" rel="noopener">YouTube Help: audience retention</a></li>
-      <li><a href="https://thetvdb.com/series/ghost-adventures/seasons/official/26" target="_blank" rel="noopener">TheTVDB: Ghost Adventures season 26</a></li>
-      <li><a href="https://en.wikipedia.org/wiki/Ghost_Hunters_(TV_series)" target="_blank" rel="noopener">Wikipedia: Ghost Hunters</a></li>
-      <li><a href="https://en.wikipedia.org/wiki/Most_Haunted" target="_blank" rel="noopener">Wikipedia: Most Haunted</a></li>
-      <li><a href="https://www.mentalfloss.com/article/640719/zak-bagans-ghost-adventures-facts" target="_blank" rel="noopener">Mental Floss: Ghost Adventures facts</a></li>
-      <li><a href="https://geekdad.com/2015/08/jason-hawes/" target="_blank" rel="noopener">GeekDad: Jason Hawes interview</a></li>
-      <li><a href="https://www.higgypop.com/news/things-you-never-knew-about-most-haunted/" target="_blank" rel="noopener">Higgypop: things you never knew about Most Haunted</a></li>
-      <li><a href="https://thetvdb.com/series/ghost-files/seasons/official/5" target="_blank" rel="noopener">TheTVDB: Ghost Files season 5</a></li>
-      <li><a href="https://ytubeinfluencers.com/category/paranormal/country/united-kingdom/" target="_blank" rel="noopener">YTube Influencers: UK paranormal channels</a></li>
-      <li><a href="https://higgypop.com/news/distrust-of-paranormal-tv-shows-is-sending-viewers-to-youtube" target="_blank" rel="noopener">Higgypop: paranormal viewer survey</a></li>
-      <li><a href="https://www.argil.ai/blog/how-long-can-youtube-shorts-be" target="_blank" rel="noopener">Argil: YouTube Shorts length and retention</a></li>
-      <li><a href="https://www.socialinsider.io/blog/tiktok-vs-reels-vs-shorts/amp/" target="_blank" rel="noopener">Socialinsider: TikTok vs Reels vs Shorts engagement</a></li>
-      <li><a href="https://www.shopify.com/blog/best-time-to-upload-to-youtube" target="_blank" rel="noopener">Shopify: best time to upload to YouTube</a></li>
-      <li><a href="https://streamer.guide/guides/how-to-go-live-on-youtube" target="_blank" rel="noopener">Streamer Guide: going live on YouTube</a></li>
-      <li><a href="https://developers.facebook.com/documentation/live-video-api/getting-started" target="_blank" rel="noopener">Meta: Facebook Live requirements</a></li>
-      <li><a href="https://stackinfluence.com/blog/how-many-followers-on-tiktok-to-go-live-in-2026" target="_blank" rel="noopener">Stack Influence: TikTok LIVE requirements</a></li>
-      <li><a href="https://www.worcesterpeopleandplaces.org.uk/news/65/146/King-Charles-House.html" target="_blank" rel="noopener">Worcester People and Places: King Charles House</a></li>
-      <li><a href="https://britishlistedbuildings.co.uk/101389751-king-charles-house-worcester-cathedral-ward" target="_blank" rel="noopener">British Listed Buildings: King Charles House</a></li>
+      <li><a href="https://www.capcut.com/resource/multicam-editing" target="_blank" rel="noopener">CapCut: multicam editing</a></li>
+      <li><a href="https://www.capcut.com/help/export-videos-in-capcut" target="_blank" rel="noopener">CapCut Help: exporting videos</a></li>
+      <li><a href="https://www.capcut.com/help/why-prompted-to-purchase-capcut-pro" target="_blank" rel="noopener">CapCut Help: why am I asked to buy Pro</a></li>
+      <li><a href="https://www.capcut.com/help/why-do-i-have-to-pay-for-auto-reframe" target="_blank" rel="noopener">CapCut Help: auto reframe</a></li>
+      <li><a href="https://capcut.com/resource/capcut-standard-vs-pro" target="_blank" rel="noopener">CapCut: Standard vs Pro</a></li>
+      <li><a href="https://www.capcut.com/resource/how-to-make-a-horizontal-video-vertical" target="_blank" rel="noopener">CapCut: making a horizontal video vertical</a></li>
+      <li><a href="https://fastshortcuts.com/shortcuts/capcut/" target="_blank" rel="noopener">Fast Shortcuts: CapCut keyboard shortcuts</a></li>
+      <li><a href="https://tutorialtactic.com/blog/capcut-shortcuts/" target="_blank" rel="noopener">Tutorial Tactic: CapCut shortcuts</a></li>
+      <li><a href="https://www.tourboxtech.com/en/news/how-to-freeze-a-frame-in-capcut-pc.html" target="_blank" rel="noopener">TourBox: freeze frame in CapCut PC</a></li>
+      <li><a href="https://www.antwort.net/a/tutorial/capcut-lag-fixen-so-laeuft-dein-videoschnitt-am-pc-wieder-fluessig.html" target="_blank" rel="noopener">antwort.net: fixing CapCut lag with proxies (German)</a></li>
+      <li><a href="https://marcandrews.com/capcut-pro-price-uk-2026-plans-costs-best-deals/" target="_blank" rel="noopener">Marc Andrews: CapCut Pro UK prices 2026</a></li>
+      <li><a href="https://www.techloy.com/capcuts-latest-terms-of-service-raises-big-questions-about-content-ownership/" target="_blank" rel="noopener">Techloy: CapCut terms of service</a></li>
     </ol>
   </div>
 </footer>
 
 </div>
-
 </body>
 </html>
